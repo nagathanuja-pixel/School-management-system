@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Student Attendance</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="attendance.html">Attendance</a>
+</nav>
+
+<div class="container">
+
+    <h2>Mark Attendance</h2>
+
+    <form id="attendanceForm">
+
+        <input type="text" id="studentName"
+               placeholder="Student Name" required>
+
+        <select id="status">
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+
+        <button type="submit">Mark Attendance</button>
+
+    </form>
+
+    <h2>Attendance List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="attendanceList">
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+const form = document.getElementById("attendanceForm");
+const list = document.getElementById("attendanceList");
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("studentName").value;
+    const status = document.getElementById("status").value;
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${status}</td>
+    `;
+
+    list.appendChild(row);
+
+    form.reset();
+});
+</script>
+
+</body>
+</html>
