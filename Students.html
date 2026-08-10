@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Student Management</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="students.html">Students</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="attendance.html">Attendance</a>
+</nav>
+
+<div class="container">
+
+    <h2>Add Student</h2>
+
+    <form id="studentForm">
+
+        <input type="text" id="name" placeholder="Student Name" required>
+
+        <input type="number" id="roll" placeholder="Roll Number" required>
+
+        <input type="text" id="className" placeholder="Class" required>
+
+        <button type="submit">Add Student</button>
+
+    </form>
+
+    <h2>Student List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll Number</th>
+                <th>Class</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentList">
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+const form = document.getElementById("studentForm");
+const studentList = document.getElementById("studentList");
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const roll = document.getElementById("roll").value;
+    const className = document.getElementById("className").value;
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${roll}</td>
+        <td>${className}</td>
+    `;
+
+    studentList.appendChild(row);
+
+    form.reset();
+});
+</script>
+
+</body>
+</html>
